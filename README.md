@@ -18,11 +18,16 @@ SO THAT I have quick access to their emails and GitHub profiles
 ```md
 GIVEN a command-line application that accepts user input - Done
 WHEN I am prompted for my team members and their information - Done
+
+-------------------------------------------------------------------------------------------------
 THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-WHEN I click on an email address in the HTML
-THEN my default email program opens and populates the TO field of the email with the address
+
+WHEN I click on an email address in the HTML - Done
+THEN my default email program opens and populates the TO field of the email with the address - Done
+
 WHEN I click on the GitHub username
 THEN that GitHub profile opens in a new tab
+-------------------------------------------------------------------------------------------------
 
 WHEN I start the application - Done
 THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number - Done

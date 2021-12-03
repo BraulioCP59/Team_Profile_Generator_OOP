@@ -22,14 +22,14 @@ const buildTeamSite = async () => {
             case 'Manager':
                 teamCards += ` <div id="Manager" class="card col-md-6" style="width: 17rem; margin: 10px 0; padding: 0;">
                 <div style="background-color: dodgerblue; border-top-right-radius: 5px; border-top-left-radius: 5px; color: floralwhite; padding-left: 15px;">
-                    <h3>Braulio Mora</h3>
-                    <h3>Manager</h3>
+                    <h3>${employee.name}</h3>
+                    <h4>${employee.getRole()}</h4>
                 </div>
                 <div class="" style="background-color: rgb(248, 248, 248);">
                   <div style="border: 1px solid lightgray; border-radius: 5px; margin: 30px 15px; background-color: white;">
-                    <p style="border-bottom: 1px solid lightgray; margin-bottom: 0;">ID: </p>
-                    <p style="margin-bottom: 0;">Email:<a href="mailto: brauliocdc59@gmail.com"> brauliocdc59@gmail.com </a></p>
-                    <p style="border-top: 1px solid lightgray; margin-bottom: 0;">Office Number: </p>
+                    <p style="border-bottom: 1px solid lightgray; margin-bottom: 0;">ID: ${employee.id} </p>
+                    <p style="margin-bottom: 0;">Email:<a href="mailto: ${employee.email}"> ${employee.email} </a></p>
+                    <p style="border-top: 1px solid lightgray; margin-bottom: 0;">Office Number: ${employee.officeNumber} </p>
                   </div>
                 </div>
             </div>`;
@@ -37,14 +37,14 @@ const buildTeamSite = async () => {
             case 'Engineer':
                 teamCards += `<div id="Engineer" class="card col-md-6" style="width: 17rem; margin: 10px 0; padding: 0;">
                 <div style="background-color: dodgerblue; border-top-right-radius: 5px; border-top-left-radius: 5px; color: floralwhite; padding-left: 15px;">
-                    <h3>Cynthia Mora</h3>
-                    <h3>Engineer</h3>
+                    <h3>${employee.name}</h3>
+                    <h4>${employee.getRole()}</h4>
                 </div>
                 <div class="" style="background-color: rgb(248, 248, 248);">
                   <div style="border: 1px solid lightgray; border-radius: 5px; margin: 30px 15px; background-color: white;">
-                    <p style="border-bottom: 1px solid lightgray; margin-bottom: 0;">ID: </p>
-                    <p style="margin-bottom: 0;">Email:<a href="mailto: brauliocdc59@gmail.com"> brauliocdc59@gmail.com </a></p>
-                    <p style="border-top: 1px solid lightgray; margin-bottom: 0;">GitHub: <a href="https://github.com/BraulioCP59" target="_blank">BraulioCP59</a></p>
+                    <p style="border-bottom: 1px solid lightgray; margin-bottom: 0;">ID: ${employee.id} </p>
+                    <p style="margin-bottom: 0;">Email:<a href="mailto: ${employee.email}"> ${employee.email} </a></p>
+                    <p style="border-top: 1px solid lightgray; margin-bottom: 0;">GitHub: <a href="https://github.com/${employee.github}" target="_blank">${employee.github}</a></p>
                   </div>
                 </div>
             </div>`;
@@ -52,14 +52,14 @@ const buildTeamSite = async () => {
             case 'Intern':
                 teamCards += ` <div id="Intern" class="card col-md-6" style="width: 17rem; margin: 10px 0; padding: 0;">
                 <div style="background-color: dodgerblue; border-top-right-radius: 5px; border-top-left-radius: 5px; color: floralwhite; padding-left: 15px;">
-                    <h3>Alden Mora</h3>
-                    <h3>Intern</h3>
+                    <h3>${employee.name}</h3>
+                    <h4>${employee.getRole()}</h4>
                 </div>
                 <div class="" style="background-color: rgb(248, 248, 248);">
                   <div style="border: 1px solid lightgray; border-radius: 5px; margin: 30px 15px; background-color: white;">
-                    <p style="border-bottom: 1px solid lightgray; margin-bottom: 0;">ID: </p>
-                    <p style="margin-bottom: 0;">Email:<a href="mailto: brauliocdc59@gmail.com"> brauliocdc59@gmail.com </a></p>
-                    <p style="border-top: 1px solid lightgray; margin-bottom: 0;">School: </p>
+                    <p style="border-bottom: 1px solid lightgray; margin-bottom: 0;">ID: ${employee.id} </p>
+                    <p style="margin-bottom: 0;">Email:<a href="mailto: ${employee.email}"> ${employee.email} </a></p>
+                    <p style="border-top: 1px solid lightgray; margin-bottom: 0;">School: ${employee.school}</p>
                   </div>
                 </div>
             </div>`;
@@ -103,7 +103,7 @@ const buildTeam = async () => {
     
     console.log("\n");
     const managerAnswers = await prompt(managerQuestions);
-    teamMembers.push(new Manager(managerAnswers));
+    teamMembers.push(new Manager(managerAnswers.name, managerAnswers.employeeID, managerAnswers.email, managerAnswers.officeNumber));
     console.log("\n---------------------------\nMANAGER HAS BEEN INSTANTIATED!\n---------------------------\n");
 
     do 
@@ -115,13 +115,13 @@ const buildTeam = async () => {
             case 'Engineer':
                 console.log("\n");
                 const engineerAnswers = await prompt(engineerQuestions);
-                teamMembers.push(new Engineer(engineerAnswers));
+                teamMembers.push(new Engineer(engineerAnswers.name, engineerAnswers.employeeID, engineerAnswers.email, engineerAnswers.github));
                 console.log("\n---------------------------\nENGINEER HAS BEEN INSTANTIATED!\n---------------------------\n");
                 break;
             case 'Intern':
                 console.log("\n");
                 const internAnswers = await prompt(internQuestions);
-                teamMembers.push(new Intern(internAnswers));
+                teamMembers.push(new Intern(internAnswers.name, internAnswers.employeeID, internAnswers.email, internAnswers.school));
                 console.log("\n---------------------------\nINTERN HAS BEEN INSTANTIATED!\n---------------------------\n");
                 break;
             case 'My Team Is Complete':
